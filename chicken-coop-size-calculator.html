@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chicken Coop Size Calculator (Space Per Bird)</title>
+<meta name="description" content="Work out the coop and run size your flock needs — square feet and metres, nest boxes and roost length — based on 2-3 sq ft inside and 8-10 sq ft in the run.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How big should a chicken coop be for 4 hens?","acceptedAnswer":{"@type":"Answer","text":"About 1.1 square metres (12 sq ft) of floor space inside, plus roughly 3.7 square metres (40 sq ft) of run, one nest box and about 90cm of roost bar."}},{"@type":"Question","name":"How many chickens fit in a 4x8 coop?","acceptedAnswer":{"@type":"Answer","text":"A 4x8 ft coop is 32 sq ft, so about 10 hens at 3 sq ft each - but only if they also have at least 80 sq ft of run space."}},{"@type":"Question","name":"How much roost space does each chicken need?","acceptedAnswer":{"@type":"Answer","text":"About 20-25cm (8-10 inches) of roost bar per bird. Extra length prevents squabbling over position."}},{"@type":"Question","name":"Can chickens live in a small coop permanently?","acceptedAnswer":{"@type":"Answer","text":"Not healthily. Crowding causes feather-pecking, disease and stress. Keep fewer birds rather than squeezing more into the same coop."}}]}</script>
+<link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<main>
+<header class="site-head">
+  <a class="brand" href="/">Herbal Home Remedies</a>
+  <nav>
+    <a href="/">All guides</a>
+    <a href="/about.html">About</a>
+  </nav>
+</header>
+<h1>Chicken Coop Size Calculator</h1>
+<p class="lede">Enter your flock size to get the coop floor area, run area, nest boxes and roost length you need. Crowding is the single biggest cause of pecking and disease.</p>
+<div class="calc">
+  <div class="calc-row"><label for="birds">Number of birds</label><input id="birds" type="number" value="4" min="1" step="1"></div>
+  <div class="calc-row"><label for="space">Space standard</label><select id="space"><option value="2,8">Minimum (2 + 8 sq ft)</option><option value="3,10" selected>Comfortable (3 + 10 sq ft)</option><option value="4,12">Generous (4 + 12 sq ft)</option></select></div>
+  <div class="calc-row"><label for="units">Show in</label><select id="units"><option value="metric" selected>Metric (m²)</option><option value="imperial">Imperial (sq ft)</option></select></div>
+  <button id="go" type="button" class="calc-btn">Calculate</button>
+  <div id="out" class="calc-out" aria-live="polite"></div>
+</div>
+<script>
+(function () {
+  function run() {
+    var n = parseInt(document.getElementById("birds").value, 10);
+    var parts = document.getElementById("space").value.split(",");
+    var inside = parseFloat(parts[0]);
+    var run = parseFloat(parts[1]);
+    var metric = document.getElementById("units").value === "metric";
+    if (!(n > 0)) { document.getElementById("out").innerHTML = "<p>Enter at least one bird.</p>"; return; }
+    var coopSqFt = n * inside, runSqFt = n * run;
+    var coop = metric ? (coopSqFt * 0.092903).toFixed(2) + " m²" : coopSqFt + " sq ft";
+    var runS = metric ? (runSqFt * 0.092903).toFixed(2) + " m²" : runSqFt + " sq ft";
+    var nest = Math.max(1, Math.ceil(n / 5));
+    var roost = metric ? (n * 0.22).toFixed(2) + " m" : (n * 9) + " in";
+    var feeder = metric ? (n * 0.05).toFixed(2) + " m" : (n * 2) + " in";
+    document.getElementById("out").innerHTML =
+      "<table><tbody>" +
+      "<tr><th>Coop floor area</th><td><strong>" + coop + "</strong> (" + inside + " sq ft per bird)</td></tr>" +
+      "<tr><th>Run area</th><td><strong>" + runS + "</strong> (" + run + " sq ft per bird)</td></tr>" +
+      "<tr><th>Nest boxes</th><td>" + nest + " (one per 5 hens is enough)</td></tr>" +
+      "<tr><th>Roost bar length</th><td>" + roost + "</td></tr>" +
+      "<tr><th>Feeder space</th><td>" + feeder + "</td></tr>" +
+      "</tbody></table>";
+  }
+  document.getElementById("go").addEventListener("click", run);
+  document.getElementById("birds").addEventListener("input", run);
+  document.getElementById("space").addEventListener("change", run);
+  document.getElementById("units").addEventListener("change", run);
+  run();
+})();
+</script>
+<h2>Why the space numbers matter</h2>
+<ul>
+<li><strong>2 sq ft inside</strong> is the absolute minimum for a healthy bird in a mild climate</li>
+<li><strong>8 sq ft in the run</strong> prevents boredom, which is what causes feather-pecking</li>
+<li>If birds are shut in all winter, use the generous setting — they cannot escape each other</li>
+<li>Bantams need about two-thirds of the space of a standard hen</li>
+</ul>
+<h2>Height and ventilation</h2>
+<p>A coop should be at least <strong>60 cm / 2 ft</strong> tall at the back and higher at the front. Height matters less than airflow: a sealed coop builds up ammonia and moisture, which causes respiratory disease.</p>
+<p>Leave vents high on the wall, above the birds' heads when roosting. Ventilation without draught at bird level is the goal.</p>
+<h2>Run vs free range</h2>
+<p>The calculator assumes the birds are confined. If they genuinely free-range over a large area for most of the day, the run can be smaller — but a "run" they are shut into on wet days still needs the full space.</p>
+<h2>Common questions</h2>
+<h3>How big should a chicken coop be for 4 hens?</h3>
+<p>About 1.1 m² (12 sq ft) of floor space inside, plus roughly 3.7 m² (40 sq ft) of run. Add one nest box and about 90 cm of roost bar.</p>
+<h3>How many chickens can fit in a 4x8 coop?</h3>
+<p>A 4x8 ft coop is 32 sq ft, so about 10 hens at 3 sq ft each — but only if they also have at least 80 sq ft of run.</p>
+<h3>Can chickens be kept in a small coop permanently?</h3>
+<p>Not healthily. Crowding causes pecking, feather loss and disease. If space is limited, keep fewer birds rather than squeezing more in.</p>
+<h3>How much roost space per chicken?</h3>
+<p>About 20-25 cm (8-10 inches) of roost bar per bird. They shuffle for position, so a little extra prevents squabbles.</p>
+<div class="cta"><p>Coop plans, breeds, feeding amounts and the whole first year: <a href="https://www.digistore24.com/redir/639587/xiagen0220177f/seo-coopcalc">Backyard Chickens for Beginners</a>.</p></div>
+<p class="note">Disclosure: the link above is an affiliate link. We may earn a commission if you buy through it, at no extra cost to you.</p>
+<footer class="site-foot">
+  <p>Practical guides on herbal remedies, small-space growing and keeping a few chickens. Some pages contain disclosed affiliate links. Nothing here is medical advice.</p>
+</footer>
+</main>
+</body>
+</html>
