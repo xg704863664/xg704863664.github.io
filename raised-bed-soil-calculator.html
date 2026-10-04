@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raised Bed Soil Calculator (Bags, Cubic Feet and Cost)</title>
+<meta name="description" content="Work out exactly how much soil your raised bed needs — in cubic metres, cubic feet, litres and 40-litre bags — plus the soil mix ratios to use.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much soil does a 4x8 raised bed need?","acceptedAnswer":{"@type":"Answer","text":"A 4x8 ft bed at 12 inches deep needs about 32 cubic feet (0.9 cubic metres), roughly 23 bags of 40 litres."}},{"@type":"Question","name":"How many bags of soil for a raised bed?","acceptedAnswer":{"@type":"Answer","text":"Divide the volume in litres by the bag size and round up. A 1.2m x 2.4m bed at 30cm depth needs about 864 litres, so 22 bags of 40 litres."}},{"@type":"Question","name":"Should you fill a raised bed with only compost?","acceptedAnswer":{"@type":"Answer","text":"No. Pure compost compacts, holds too much water and costs more. Use about 60% topsoil, 30% compost and 10% sand or perlite."}},{"@type":"Question","name":"What should go in the bottom of a raised bed?","acceptedAnswer":{"@type":"Answer","text":"A single layer of cardboard to suppress weeds. Avoid plastic, landscape fabric and gravel, which harm drainage rather than help it."}}]}</script>
+<link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<main>
+<header class="site-head">
+  <a class="brand" href="/">Herbal Home Remedies</a>
+  <nav>
+    <a href="/">All guides</a>
+    <a href="/about.html">About</a>
+  </nav>
+</header>
+<h1>Raised Bed Soil Calculator</h1>
+<p class="lede">Enter your bed dimensions to get the volume in cubic metres, cubic feet and bags. No more guessing at the garden centre.</p>
+<div class="calc">
+  <div class="calc-row"><label for="len">Bed length</label><input id="len" type="number" value="240" min="1" step="1"><select id="unit"><option value="cm">cm</option><option value="m">m</option><option value="ft">ft</option><option value="in">in</option></select></div>
+  <div class="calc-row"><label for="wid">Bed width</label><input id="wid" type="number" value="120" min="1" step="1"><span id="u2">cm</span></div>
+  <div class="calc-row"><label for="dep">Soil depth</label><input id="dep" type="number" value="30" min="1" step="1"><span id="u3">cm</span></div>
+  <button id="go" type="button" class="calc-btn">Calculate</button>
+  <div id="out" class="calc-out" aria-live="polite"></div>
+</div>
+<script>
+(function () {
+  var U = { cm: 0.01, m: 1, ft: 0.3048, in: 0.0254 };
+  function run() {
+    var unit = document.getElementById("unit").value;
+    var f = U[unit];
+    var L = parseFloat(document.getElementById("len").value) * f;
+    var W = parseFloat(document.getElementById("wid").value) * f;
+    var D = parseFloat(document.getElementById("dep").value) * f;
+    if (!(L > 0 && W > 0 && D > 0)) { document.getElementById("out").innerHTML = "<p>Enter positive numbers.</p>"; return; }
+    var m3 = L * W * D;
+    var ft3 = m3 * 35.3147;
+    var litres = m3 * 1000;
+    var bags40 = Math.ceil(litres / 40);
+    var bagsL = Math.ceil(litres / 50);
+    document.getElementById("out").innerHTML =
+      "<table><tbody>" +
+      "<tr><th>Volume</th><td><strong>" + m3.toFixed(2) + " m³</strong> (" + ft3.toFixed(1) + " cubic feet)</td></tr>" +
+      "<tr><th>Litres</th><td>" + Math.round(litres) + " L</td></tr>" +
+      "<tr><th>40-litre bags</th><td><strong>" + bags40 + " bags</strong></td></tr>" +
+      "<tr><th>50-litre bags</th><td>" + bagsL + " bags</td></tr>" +
+      "<tr><th>Soil mix (60/30/10)</th><td>Topsoil " + Math.round(litres * 0.6) + " L · Compost " + Math.round(litres * 0.3) + " L · Sand/perlite " + Math.round(litres * 0.1) + " L</td></tr>" +
+      "</tbody></table>";
+  }
+  document.getElementById("go").addEventListener("click", run);
+  document.getElementById("unit").addEventListener("change", function () {
+    var u = this.value;
+    document.getElementById("u2").textContent = u;
+    document.getElementById("u3").textContent = u;
+  });
+  run();
+})();
+</script>
+<h2>How the calculation works</h2>
+<p>Volume = length × width × depth, all in the same unit. That is the whole formula — the calculator just does the conversions and rounds the bag count up.</p>
+<h2>Soil mix ratios</h2>
+<div class="table-scroll"><table><thead><tr><th>Component</th><th>Share</th><th>Why</th></tr></thead><tbody>
+<tr><td>Topsoil or loam</td><td>60%</td><td>Body and minerals; holds the structure</td></tr>
+<tr><td>Compost</td><td>30%</td><td>Nutrients and water retention</td></tr>
+<tr><td>Coarse sand or perlite</td><td>10%</td><td>Drainage; prevents compaction</td></tr>
+</tbody></table></div>
+<p>For herbs and Mediterranean plants, push the sand/perlite share to 20%. For hungry crops like tomatoes and squash, go 50% topsoil and 40% compost.</p>
+<h2>What to put in the bottom</h2>
+<ul>
+<li><strong>Cardboard</strong> — one layer, to smother weeds. It breaks down within a season.</li>
+<li><strong>Not plastic or landscape fabric</strong> — it creates a saturated layer and blocks worms.</li>
+<li><strong>Not gravel</strong> — it does not improve drainage in a raised bed; it just raises the water table inside the bed.</li>
+<li><strong>Logs and branches</strong> — a hugelkultur base works, but expect the soil level to drop as they rot. Fill to full depth anyway.</li>
+</ul>
+<h2>Cheaper ways to fill a deep bed</h2>
+<p>A 40 cm bed needs a lot of bought soil. Two options that work:</p>
+<ol>
+<li><strong>Fill the bottom third with organic matter</strong> — logs, leaves, grass clippings, kitchen scraps. Top the last 25 cm with proper mix.</li>
+<li><strong>Build shallower</strong> — a 25 cm bed costs about 40% less to fill and grows most vegetables fine.</li>
+</ol>
+<h2>Common questions</h2>
+<h3>How much soil does a 4x8 raised bed need?</h3>
+<p>A 4x8 ft bed at 12 inches deep needs about 32 cubic feet, or roughly 0.9 cubic metres — around 23 bags of 40 litres.</p>
+<h3>How many bags of soil for a raised bed?</h3>
+<p>Divide the volume in litres by the bag size and round up. A 1.2 x 2.4 m bed at 30 cm needs about 864 litres, so 22 bags of 40 litres.</p>
+<h3>Should I fill a raised bed with only compost?</h3>
+<p>No. Pure compost compacts, holds too much water and is expensive. Mix it with topsoil and a drainage component.</p>
+<h3>How deep should the soil be?</h3>
+<p>30 cm suits most vegetables. 15 cm works for lettuce and herbs; 40 cm or more for carrots, tomatoes and potatoes.</p>
+<div class="cta"><p>Bed layouts and a simple four-bed rotation: <a href="/raised-bed-garden-layout.html">Raised Bed Garden Layout</a>.</p></div>
+<footer class="site-foot">
+  <p>Practical guides on herbal remedies, small-space growing and keeping a few chickens. Some pages contain disclosed affiliate links. Nothing here is medical advice.</p>
+</footer>
+</main>
+</body>
+</html>
