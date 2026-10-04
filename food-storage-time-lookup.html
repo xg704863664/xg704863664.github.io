@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Storage Time Lookup: How Long Does Everything Last?</title>
+<meta name="description" content="Search 24 staples to see how long they keep in the pantry, sealed long-term, or in the fridge — plus the storage condition that decides it.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does rice last?","acceptedAnswer":{"@type":"Answer","text":"White rice keeps about 2 years in a pantry and 25-30 years sealed with oxygen absorbers. Brown rice only 3-6 months because the bran oils go rancid."}},{"@type":"Question","name":"Does honey expire?","acceptedAnswer":{"@type":"Answer","text":"No. Sealed honey is effectively indefinite. Crystallisation is not spoilage - warm the jar gently to liquefy it."}},{"@type":"Question","name":"How long do eggs last?","acceptedAnswer":{"@type":"Answer","text":"Unwashed eggs keep 2-3 weeks at room temperature or 3-5 months refrigerated. Washing removes the protective bloom and shortens storage life."}},{"@type":"Question","name":"Can you eat food past its best-before date?","acceptedAnswer":{"@type":"Answer","text":"Usually yes for dry goods - best-before is a quality guide rather than a safety limit. Use-by dates on perishables should be respected."}}]}</script>
+<link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<main>
+<header class="site-head">
+  <a class="brand" href="/">Herbal Home Remedies</a>
+  <nav>
+    <a href="/">All guides</a>
+    <a href="/about.html">About</a>
+  </nav>
+</header>
+<h1>Food Storage Time Lookup</h1>
+<p class="lede">Type a food to see how long it keeps. The fourth column matters most — most spoilage is a storage-condition problem, not a time problem.</p>
+<div class="calc">
+  <div class="calc-row"><label for="q">Search</label><input id="q" type="text" placeholder="rice, flour, eggs, oil…" style="width:14rem"></div>
+  <div id="count" style="font-size:.92rem;color:var(--muted)"></div>
+</div>
+<script>
+(function () {
+  var q = document.getElementById("q");
+  var rows = [].slice.call(document.querySelectorAll("tr[data-k]"));
+  var count = document.getElementById("count");
+  function run() {
+    var v = (q.value || "").trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function (r) {
+      var hit = !v || r.getAttribute("data-k").indexOf(v) >= 0;
+      r.style.display = hit ? "" : "none";
+      if (hit) shown++;
+    });
+    count.textContent = shown + " of " + rows.length + " foods shown";
+  }
+  q.addEventListener("input", run);
+  run();
+})();
+</script>
+<div class="table-scroll"><table><thead><tr><th>Food</th><th>Pantry</th><th>Sealed long-term</th><th>Fridge / freezer</th><th>Key condition</th></tr></thead><tbody>
+<tr data-k="white rice cool, dry, airtight"><td><strong>White rice</strong></td><td>2 years</td><td>25–30 years</td><td>—</td><td>Cool, dry, airtight</td></tr>
+<tr data-k="brown rice fridge or freezer — bran oils go rancid"><td><strong>Brown rice</strong></td><td>3–6 months</td><td>6–12 months</td><td>18 months</td><td>Fridge or freezer — bran oils go rancid</td></tr>
+<tr data-k="white flour airtight; freeze new bags 48h for weevils"><td><strong>White flour</strong></td><td>1–2 years</td><td>Indefinite</td><td>2 years</td><td>Airtight; freeze new bags 48h for weevils</td></tr>
+<tr data-k="whole wheat flour freeze; oils oxidise"><td><strong>Whole wheat flour</strong></td><td>3–6 months</td><td>1–2 years</td><td>6–12 months</td><td>Freeze; oils oxidise</td></tr>
+<tr data-k="dried beans older beans need longer cooking"><td><strong>Dried beans</strong></td><td>2–3 years</td><td>10+ years</td><td>—</td><td>Older beans need longer cooking</td></tr>
+<tr data-k="dried pasta airtight, cool"><td><strong>Dried pasta</strong></td><td>2 years</td><td>10+ years</td><td>—</td><td>Airtight, cool</td></tr>
+<tr data-k="rolled oats whole oats keep longer than rolled"><td><strong>Rolled oats</strong></td><td>6–12 months</td><td>2 years</td><td>—</td><td>Whole oats keep longer than rolled</td></tr>
+<tr data-k="white sugar never truly spoils; clumps with moisture"><td><strong>White sugar</strong></td><td>2 years</td><td>Indefinite</td><td>—</td><td>Never truly spoils; clumps with moisture</td></tr>
+<tr data-k="honey may crystallise — warm gently, do not discard"><td><strong>Honey</strong></td><td>Indefinite</td><td>Indefinite</td><td>—</td><td>May crystallise — warm gently, do not discard</td></tr>
+<tr data-k="salt iodised salt may lose iodine over years"><td><strong>Salt</strong></td><td>Indefinite</td><td>Indefinite</td><td>—</td><td>Iodised salt may lose iodine over years</td></tr>
+<tr data-k="olive oil dark, cool; rancid oil smells like crayons"><td><strong>Olive oil</strong></td><td>18–24 months</td><td>—</td><td>—</td><td>Dark, cool; rancid oil smells like crayons</td></tr>
+<tr data-k="coconut oil solidifies below 24c — normal"><td><strong>Coconut oil</strong></td><td>2 years</td><td>—</td><td>—</td><td>Solidifies below 24C — normal</td></tr>
+<tr data-k="canned goods (low acid) dented or bulging cans: discard"><td><strong>Canned goods (low acid)</strong></td><td>2–5 years</td><td>—</td><td>—</td><td>Dented or bulging cans: discard</td></tr>
+<tr data-k="canned tomatoes (high acid) acid shortens can life"><td><strong>Canned tomatoes (high acid)</strong></td><td>12–18 months</td><td>—</td><td>—</td><td>Acid shortens can life</td></tr>
+<tr data-k="eggs, unwashed do not wash until use"><td><strong>Eggs, unwashed</strong></td><td>2–3 weeks</td><td>—</td><td>—</td><td>Do not wash until use</td></tr>
+<tr data-k="eggs, refrigerated pointy end down"><td><strong>Eggs, refrigerated</strong></td><td>—</td><td>—</td><td>3–5 months</td><td>Pointy end down</td></tr>
+<tr data-k="cooked rice cool within 1 hour; reheat once"><td><strong>Cooked rice</strong></td><td>—</td><td>—</td><td>3–4 days (fridge)</td><td>Cool within 1 hour; reheat once</td></tr>
+<tr data-k="cooked meat freeze up to 3 months"><td><strong>Cooked meat</strong></td><td>—</td><td>—</td><td>3–4 days (fridge)</td><td>Freeze up to 3 months</td></tr>
+<tr data-k="milk freeze up to 3 months; texture changes"><td><strong>Milk</strong></td><td>—</td><td>—</td><td>5–7 days (fridge)</td><td>Freeze up to 3 months; texture changes</td></tr>
+<tr data-k="bread freeze sliced; fridge makes it stale faster"><td><strong>Bread</strong></td><td>3–5 days</td><td>—</td><td>3 months</td><td>Freeze sliced; fridge makes it stale faster</td></tr>
+<tr data-k="nuts freeze; high oil content"><td><strong>Nuts</strong></td><td>3–6 months</td><td>1 year</td><td>6–12 months</td><td>Freeze; high oil content</td></tr>
+<tr data-k="potatoes dark, cool, not the fridge (sugar develops)"><td><strong>Potatoes</strong></td><td>2–4 weeks</td><td>—</td><td>—</td><td>Dark, cool, not the fridge (sugar develops)</td></tr>
+<tr data-k="onions cool, dry, dark, ventilated"><td><strong>Onions</strong></td><td>1–2 months</td><td>—</td><td>—</td><td>Cool, dry, dark, ventilated</td></tr>
+<tr data-k="garlic whole heads; peeled cloves only days"><td><strong>Garlic</strong></td><td>3–5 months</td><td>—</td><td>—</td><td>Whole heads; peeled cloves only days</td></tr>
+</tbody></table></div>
+<h2>The three rules behind all of it</h2>
+<ol>
+<li><strong>Oils decide shelf life.</strong> Anything with the bran or germ intact — brown rice, whole wheat flour, nuts, whole oats — goes rancid in months. Remove the oils (white rice, white flour) and it keeps for decades.</li>
+<li><strong>Moisture and oxygen are the enemies.</strong> Airtight with an oxygen absorber is the difference between 2 years and 25.</li>
+<li><strong>Heat accelerates everything.</strong> A pantry at 30°C halves the life of almost everything on this list compared with 15°C.</li>
+</ol>
+<h2>Signs food has actually gone bad</h2>
+<ul>
+<li><strong>Rancid</strong> — smells like old paint or crayons. Common in whole grains, nuts and old oil.</li>
+<li><strong>Mould</strong> — discard. Mycotoxins survive cooking.</li>
+<li><strong>Bulging or dented cans</strong> — discard without opening. Botulism risk.</li>
+<li><strong>Off smell when opened</strong> — trust it, even if the date says otherwise.</li>
+</ul>
+<p>Note the difference: <strong>stale</strong> is a texture problem and usually safe; <strong>rancid</strong> and <strong>mouldy</strong> are not.</p>
+<h2>Common questions</h2>
+<h3>How long does rice last?</h3>
+<p>White rice keeps about 2 years in a pantry and 25-30 years sealed with oxygen absorbers. Brown rice only 3-6 months because the bran oils go rancid.</p>
+<h3>Does honey really never expire?</h3>
+<p>Correct - sealed honey is effectively indefinite. Crystallisation is not spoilage; warm the jar gently to liquefy it.</p>
+<h3>How long do eggs last?</h3>
+<p>Unwashed eggs keep 2-3 weeks at room temperature, or 3-5 months refrigerated. Washing removes the protective bloom and shortens that dramatically.</p>
+<h3>Can you eat food past its best-before date?</h3>
+<p>Usually yes for dry goods. Best-before is a quality guide, not a safety limit. Use-by dates on perishables are different and should be respected.</p>
+<div class="cta"><p>Longer guides on individual foods: <a href="/how-long-does-rice-last.html">rice</a> · <a href="/how-long-does-flour-last.html">flour</a> · <a href="/can-you-freeze-eggs.html">eggs</a> · <a href="/food-storage-chart.html">full chart</a>.</p></div>
+<footer class="site-foot">
+  <p>Practical guides on herbal remedies, small-space growing and keeping a few chickens. Some pages contain disclosed affiliate links. Nothing here is medical advice.</p>
+</footer>
+</main>
+</body>
+</html>
