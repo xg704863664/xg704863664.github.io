@@ -201,3 +201,10 @@ tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--bg) 60%, var(
   .calc-row label { flex: 0 0 100%; }
   .calc-row input { width: 100%; }
 }
+
+/* 相关指南（构建时自动生成） */
+.related { margin: 2.2rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--line, #e3e3e3); }
+.related h2 { font-size: 1.05rem; margin: 0 0 .7rem; }
+.related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .45rem; }
+.related li a { display: block; padding: .5rem .7rem; border: 1px solid var(--line, #e3e3e3); border-radius: 6px; text-decoration: none; }
+.related li a:hover { border-color: var(--accent, #2f6f4e); }
