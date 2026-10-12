@@ -208,3 +208,9 @@ tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--bg) 60%, var(
 .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .45rem; }
 .related li a { display: block; padding: .5rem .7rem; border: 1px solid var(--line, #e3e3e3); border-radius: 6px; text-decoration: none; }
 .related li a:hover { border-color: var(--accent, #2f6f4e); }
+
+/* 联盟 CTA 按钮化（提升点击率） */
+.cta { background:#f4f7f2; border-left:5px solid #2f5d3a; padding:20px 22px; border-radius:10px; margin:26px 0; }
+.cta a { display:inline-block; background:#2f5d3a; color:#fff !important; padding:13px 24px; border-radius:8px; text-decoration:none !important; font-weight:600; font-family:Arial, sans-serif; font-size:17px; }
+.cta a:hover { background:#24492d; }
+.cta .note { font-size:13px; color:#667; margin-top:10px; }
